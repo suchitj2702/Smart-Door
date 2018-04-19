@@ -16,7 +16,7 @@ ip = ni.ifaddresses('wlan0')[ni.AF_INET][0]['addr']
 toEmail = 'sj535@snu.edu.in'
 
 # function to actually send the email after proper structuring
-def sendEmail(impath):
+def sendEmail(img):
 	# forming the structure of the mail
 	msgRoot = MIMEMultipart('related')
 	msgRoot['Subject'] = 'Smart Door Notification'
@@ -29,7 +29,7 @@ def sendEmail(impath):
 	msgAlternative.attach(msgText)
 
 	# attaching the image
-	msgImage = MIMEImage(impath.read())
+	msgImage = MIMEImage(img)
 	msgRoot.attach(msgImage)
 
 	# calling the smtp routine by google for sending the mail
